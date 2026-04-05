@@ -84,81 +84,93 @@ public interface StaffRuneOverlayConfig extends Config
 		}
 	}
 
-	@ConfigSection(name = "Display", description = "Settings for staff rune overlays", position = 0)
-	String displaySection = "displaySection";
+	@ConfigSection(name = "General", description = "Core staff rune overlay settings", position = 0)
+	String generalSection = "generalSection";
 
-	@ConfigItem(keyName = "showRunes", name = "Show Runes", description = "Show rune overlays on staves", position = 1, section = displaySection)
+	@ConfigSection(name = "Appearance", description = "Visual display settings", position = 1)
+	String appearanceSection = "appearanceSection";
+
+	@ConfigSection(name = "Inventory", description = "Inventory-specific placement settings", position = 2)
+	String inventorySection = "inventorySection";
+
+	@ConfigSection(name = "Banks And Shops", description = "Container-specific placement settings", position = 3)
+	String containerSection = "containerSection";
+
+	@ConfigSection(name = "Equipment", description = "Equipment screen placement settings", position = 4)
+	String equipmentSection = "equipmentSection";
+
+	@ConfigItem(keyName = "showRunes", name = "Enable Overlay", description = "Show rune overlays on supported staves", position = 0, section = generalSection)
 	default boolean showRunes()
 	{
 		return true;
 	}
 
-	@ConfigItem(keyName = "staffMode", name = "Display Mode", description = "Show rune icons or letters", position = 2, section = displaySection)
-	default StaffMode staffMode()
-	{
-		return StaffMode.ICON;
-	}
-
-	@ConfigItem(keyName = "showTooltip", name = "Show Tooltip", description = "Add the staff rune info to the item tooltip on hover", position = 3, section = displaySection)
+	@ConfigItem(keyName = "showTooltip", name = "Show Hover Tooltip", description = "Add staff rune info to the item tooltip on hover", position = 1, section = generalSection)
 	default boolean showTooltip()
 	{
 		return false;
 	}
 
-	@ConfigItem(keyName = "staffLayout", name = "Inventory Layout", description = "Where to place staff runes in your inventory", position = 4, section = displaySection)
-	default StaffLayout staffLayout()
+	@ConfigItem(keyName = "staffMode", name = "Overlay Mode", description = "Display rune overlays as icons or letters", position = 0, section = appearanceSection)
+	default StaffMode staffMode()
 	{
-		return StaffLayout.DIAGONAL;
-	}
-
-	@ConfigItem(keyName = "staffColor", name = "Text Color", description = "Color for rune letters in text mode", position = 5, section = displaySection)
-	default Color staffColor()
-	{
-		return Color.CYAN;
+		return StaffMode.ICON;
 	}
 
 	@Range(min = 10, max = 25)
-	@ConfigItem(keyName = "iconSize", name = "Icon Size", description = "Size of the rune icons", position = 6, section = displaySection)
+	@ConfigItem(keyName = "iconSize", name = "Icon Size", description = "Size of the rune icons", position = 1, section = appearanceSection)
 	default int iconSize()
 	{
 		return 16;
 	}
 
+	@Range(min = 9, max = 20)
+	@ConfigItem(keyName = "staffTextSize", name = "Text Size", description = "Size of the rune letters in text mode", position = 2, section = appearanceSection)
+	default int staffTextSize()
+	{
+		return 15;
+	}
+
+	@ConfigItem(keyName = "staffColor", name = "Text Color", description = "Color used for rune letters in text mode", position = 3, section = appearanceSection)
+	default Color staffColor()
+	{
+		return Color.CYAN;
+	}
+
 	@Range(min = -5, max = 10)
-	@ConfigItem(keyName = "staffOffset", name = "Corner Offset", description = "Nudge rune overlays within the item slot", position = 7, section = displaySection)
+	@ConfigItem(keyName = "staffOffset", name = "Corner Offset", description = "Nudge rune overlays within the item slot", position = 4, section = appearanceSection)
 	default int staffOffset()
 	{
 		return 0;
 	}
 
-	@ConfigItem(keyName = "showRunesInContainers", name = "Show In Banks", description = "Also show staff runes in bank and other inventory-style containers", position = 8, section = displaySection)
+	@ConfigItem(keyName = "staffLayout", name = "Layout", description = "Where to place staff runes in your inventory", position = 0, section = inventorySection)
+	default StaffLayout staffLayout()
+	{
+		return StaffLayout.DIAGONAL;
+	}
+
+	@ConfigItem(keyName = "showRunesInContainers", name = "Show Overlay", description = "Also show staff runes in banks and other inventory-style containers", position = 0, section = containerSection)
 	default boolean showRunesInContainers()
 	{
 		return true;
 	}
 
-	@ConfigItem(keyName = "staffContainerLayout", name = "Bank Layout", description = "Where to place staff runes in banks and shops", position = 9, section = displaySection)
+	@ConfigItem(keyName = "staffContainerLayout", name = "Layout", description = "Where to place staff runes in banks and shops", position = 1, section = containerSection)
 	default StaffLayout staffContainerLayout()
 	{
 		return StaffLayout.BOTTOM;
 	}
 
-	@ConfigItem(keyName = "showRunesOnEquipment", name = "Show On Equipment", description = "Also show staff runes on the equipment screen", position = 10, section = displaySection)
+	@ConfigItem(keyName = "showRunesOnEquipment", name = "Show Overlay", description = "Also show staff runes on the equipment screen", position = 0, section = equipmentSection)
 	default boolean showRunesOnEquipment()
 	{
 		return true;
 	}
 
-	@ConfigItem(keyName = "staffEquipmentLayout", name = "Equipment Layout", description = "Where to place staff runes on the equipment screen", position = 11, section = displaySection)
+	@ConfigItem(keyName = "staffEquipmentLayout", name = "Layout", description = "Where to place staff runes on the equipment screen", position = 1, section = equipmentSection)
 	default StaffLayout staffEquipmentLayout()
 	{
 		return StaffLayout.DIAGONAL;
-	}
-
-	@Range(min = 9, max = 20)
-	@ConfigItem(keyName = "staffTextSize", name = "Text Size", description = "Size of the rune letters in text mode", position = 12, section = displaySection)
-	default int staffTextSize()
-	{
-		return 15;
 	}
 }

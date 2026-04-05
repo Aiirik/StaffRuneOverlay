@@ -99,7 +99,7 @@ public interface StaffRuneOverlayConfig extends Config
 	@ConfigSection(name = "Equipment", description = "Equipment screen placement settings", position = 4)
 	String equipmentSection = "equipmentSection";
 
-	@ConfigItem(keyName = "showRunes", name = "Enable Overlay", description = "Show rune overlays on supported staves", position = 0, section = generalSection)
+	@ConfigItem(keyName = "showRunes", name = "Show Item Overlay", description = "Show rune overlays on supported staves", position = 0, section = generalSection)
 	default boolean showRunes()
 	{
 		return true;

@@ -88,18 +88,9 @@ public class StaffRuneOverlayOverlay extends WidgetItemOverlay
 	@Override
 	public void renderItemOverlay(Graphics2D graphics, int itemId, WidgetItem itemWidget)
 	{
-		if (!config.showRunes())
-		{
-			return;
-		}
-
 		Widget widget = itemWidget.getWidget();
 		boolean inContainer = isContainerWidget(widget);
 		boolean inEquipment = isEquipmentWidget(widget);
-		if (!shouldRenderInLocation(inContainer, inEquipment))
-		{
-			return;
-		}
 
 		int[] runeIds = itemCache.computeIfAbsent(itemId, this::getRuneIdsForItem);
 		if (runeIds.length == 0)
@@ -108,6 +99,11 @@ public class StaffRuneOverlayOverlay extends WidgetItemOverlay
 		}
 
 		maybeAddTooltip(itemWidget, runeIds);
+
+		if (!config.showRunes() || !shouldRenderInLocation(inContainer, inEquipment))
+		{
+			return;
+		}
 
 		Rectangle bounds = itemWidget.getCanvasBounds();
 		if (config.staffMode() == StaffRuneOverlayConfig.StaffMode.ICON)

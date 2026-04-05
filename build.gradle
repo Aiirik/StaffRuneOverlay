@@ -20,7 +20,7 @@ repositories {
 }
 
 def runeLiteVersion = 'latest.release'
-def pluginMainClass = 'com.aiirik.detailedoverlay.DetailedOverlayPluginTest'
+def pluginMainClass = 'com.aiirik.staffruneoverlay.StaffRuneOverlayPluginTest'
 
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
@@ -30,7 +30,7 @@ dependencies {
 	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 }
 
-group = 'com.aiirik.detailedoverlay'
+group = 'com.aiirik.staffruneoverlay'
 version = '1.0.0'
 
 tasks.withType(JavaCompile).configureEach {

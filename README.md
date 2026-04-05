@@ -1,14 +1,14 @@
-# Detailed Overlay
+# Staff Rune Overlay
 
-RuneLite external plugin that adds lightweight overlays for:
+RuneLite external plugin that shows the elemental runes provided by elemental and combination staves.
 
-- **Potion doses**
-  - Shows (4,3,2,1) beside your potion, making it clear how many doses it has left.
-- **Elemental and combination staves** 
-  - Shows runes they provide, never guess or take the wrong staff with you.
-- **Combat style XP labels** 
-  - Shows combat style XP (ATK, STR, DEF) you will gain on the buttons themselves.
+The overlay supports:
+
+- Inventory
+- Bank and other item containers
+- Equipment screen
+- Icon or text display modes
 
 ## Development
 
-Will be adding new features as I go.
+Focused on the staff rune overlay only.
